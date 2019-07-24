@@ -12,3 +12,5 @@ If something doesn't work, please follow onscreen Instructions and if nothing he
 # There is something missing!
 I know, that right now the Software is limited on a normal and casual Server, but I'm planning on adding new Features!
 Check my to-do List and if there isn't the Feature you want open a Pull Request on GitHub.
+
+This Program is not affiliated with Mojang or Microsoft!
