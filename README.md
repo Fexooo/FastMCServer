@@ -13,4 +13,9 @@ If something doesn't work, please follow onscreen Instructions and if nothing he
 I know, that right now the Software is limited on a normal and casual Server, but I'm planning on adding new Features!
 Check my to-do List and if there isn't the Feature you want open a Pull Request on GitHub.
 
+# TODO
++ Add Graphical User Interface (currently in development)
++ Edit Server Properties of existing Server
++ Edit Gamerule and other InGame Settings through a Plugin
+
 This Program is not affiliated with Mojang or Microsoft!
