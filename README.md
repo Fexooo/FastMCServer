@@ -14,7 +14,7 @@ I know, that right now the Software is limited on a normal and casual Server, bu
 Check my to-do List and if there isn't the Feature you want open a Pull Request on GitHub.
 
 # TODO
-+ Add Graphical User Interface (currently in development)
++ Add Graphical User Interface (currently live on the experimental Branch)
 + Edit Server Properties of existing Server
 + Add an Installer
 + Edit Gamerule and other InGame Settings through a Plugin
