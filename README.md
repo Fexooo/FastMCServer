@@ -1,4 +1,4 @@
-# FastMCServer
+# FastMCServer Experimental Branch
 Just a Java Program, that creates a Minecraft Server fast and easy!
 
 # How do I use it?
