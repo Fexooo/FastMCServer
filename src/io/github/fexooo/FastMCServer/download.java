@@ -17,11 +17,15 @@ public class download {
 	
 	public static void owndl(String os, boolean sfile, boolean screen) {
 		
+		if(main.console == true) {
+		
 		main.clear(5);
 		
 		System.out.println("Now you need a Download Link of your Minecraft Server Jar File!");
 		System.out.println("To find a Download Link, you can search the internet or check the Website of this Program!");
 		System.out.println("NOTE: I (the Developer) am not responsible for the Files you download now! YOU provide the Download Link here and your downloading at you own Risk!");
+		System.out.println("If you already have your Server Jar File, type x as Download Link!");
+		System.out.println("Also make sure you named that File server.jar !");
 		System.out.println("Please enter now your Download Link!");
 		
 		main.clear(1);
@@ -30,24 +34,37 @@ public class download {
 		
 		main.clear(1);
 		
-		System.out.println("Downloading...");
+		if (dlurl == "x") {
+			
+			System.out.println("Using File that has been downloaded already...");
+			
+		} else {
 		
-		try {
-			InputStream in = new URL(dlurl).openStream();
-			Files.copy(in, Paths.get("server.jar"), StandardCopyOption.REPLACE_EXISTING);
-			System.out.println("Download finished!");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("A Problem occured! It may be, that the Download Link you provided doesn't work, or something else happened!");
-			System.out.println("Check the Download Link and if the Problem still occurs, please contact the developer or visit the GitHub Page of this Program!");
-			System.out.println("The Setup will continue now, but the initial Jar File, to start the Server, is missing!");
-			System.out.println("Error Code: 20");
+			System.out.println("Downloading...");
+			
+			try {
+				InputStream in = new URL(dlurl).openStream();
+				Files.copy(in, Paths.get("server.jar"), StandardCopyOption.REPLACE_EXISTING);
+				System.out.println("Download finished!");
+	
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("A Problem occured! It may be, that the Download Link you provided doesn't work, or something else happened!");
+				System.out.println("Check the Download Link and if the Problem still occurs, please contact the developer or visit the GitHub Page of this Program!");
+				System.out.println("The Setup will continue now, but the initial Jar File, to start the Server, is missing!");
+				System.out.println("Error Code: 20");
+			}
+		
 		}
 		
 		
-		
 		setup.setupfiles(os, sfile, screen);
+	
+		} else {
+			
+			downloadwindow dlw = new downloadwindow(os, sfile, screen);
+			
+		}
 		
 	}
 	

@@ -5,11 +5,57 @@ import io.github.fexooo.FastMCServer.download;
 
 public class main {
 	
-	static Float version = (float) 1.0;
+	static Float version = (float) 1.1;
+	
+	static boolean console = false;
 
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		
+		if(main.console == false) {
+			
+			mainwindow.main();
+			
+		} else if(main.console == true) {
+		
+		System.out.println("Welcome to FastMCServer!");
+		System.out.println("Version: " + version.toString());
+		System.out.println("Do you want to either edit an existing Server or create a new Server?");
+		System.out.println("To create a new Server: new");
+		System.out.println("To edit an existing Server: edit (Coming soon!)");
+		
+		clear(1);
+		
+		String mode = scanner.nextLine();
+		
+		if (mode.equalsIgnoreCase("new")) {
+			
+			startsetup();
+			
+		} else if (mode.equalsIgnoreCase("edit")) {
+			
+			System.out.println("Coming soon! Quitting...");
+			
+			System.exit(0);
+			
+		} else {
+			
+			clear(1);
+			
+			System.out.println("Invalid Input! Quitting...");
+			
+			System.exit(0);
+			
+		}
+		
+		}
+		
+	}
+	
+	public static void startsetup() {
+		
+		if(console == true) {
 		
 		System.out.println("Welcome to FastMCServer Setup!");
 		System.out.println("Version: " + version.toString());
@@ -39,12 +85,23 @@ public class main {
 			
 			clear(5);
 			
-			System.out.println("Invalid Input! Quitting...");
+			System.out.println("Invalid Input!");
 			
-			System.exit(0);
+			startsetup();
 			
 		}
 		
+		} else {
+			
+			if(console == false) {
+				
+				System.out.println("Running in GUI Mode!");
+				
+			}
+			
+			setupwindow.main();
+			
+		}
 		
 	}
 	

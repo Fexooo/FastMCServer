@@ -29,62 +29,82 @@ public class setup {
 		
 		if(sfile == true) {
 			
-			System.out.println("How much RAM should the Server use at maximum in Gigabyte?");
-			System.out.println("Please type in a Number!");
-			Integer uram = scanner.nextInt();
+			if(main.console == true)
+			{
 			
-			if(os.equalsIgnoreCase("win")) {
+				System.out.println("How much RAM should the Server use at maximum in Gigabyte?");
+				System.out.println("Please type in a Number!");
+				Integer uram = scanner.nextInt();
 				
-				List<String> lineswin = Arrays.asList("java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
-				Path filewin = Paths.get("start.bat");
-				
-				try {
-					Files.write(filewin, lineswin, StandardCharsets.UTF_8);
-					System.out.println("Successfully created start.bat!");
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.out.println("start.bat could not be created! Redownload Program, check GitHub or contact the Developer, if the Programs still occures!");
-				}
-				
-			} else if(os.equalsIgnoreCase("linux")) {
-				
-				List<String> lineslinux;
-				
-				if(screen == true ) {
+				if(os.equalsIgnoreCase("win")) {
 					
-					lineslinux = Arrays.asList("screen -S mc java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
+					List<String> lineswin = Arrays.asList("java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
+					Path filewin = Paths.get("start.bat");
 					
+					try {
+						Files.write(filewin, lineswin, StandardCharsets.UTF_8);
+						System.out.println("Successfully created start.bat!");
+					} catch (IOException e) {
+						e.printStackTrace();
+						System.out.println("start.bat could not be created! Redownload Program, check GitHub or contact the Developer, if the Programs still occures!");
+					}
+					
+					properties(os, sfile, screen);
+					
+				} else if(os.equalsIgnoreCase("linux")) {
+					
+					List<String> lineslinux;
+					
+					if(screen == true ) {
+						
+						lineslinux = Arrays.asList("screen -S mc java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
+						
+					} else {
+						
+						lineslinux = Arrays.asList("java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
+						
+					}
+					Path filelinux = Paths.get("start.sh");
+					
+					try {
+						Files.write(filelinux, lineslinux, StandardCharsets.UTF_8);
+						System.out.println("Successfully created start.sh!");
+					} catch (IOException e) {
+						e.printStackTrace();
+						System.out.println("start.sh could not be created! Redownload Program, check GitHub or contact the Developer, if the Programs still occures!");
+					}
+					
+					properties(os, sfile, screen);
+				
 				} else {
 					
-					lineslinux = Arrays.asList("java -Xmx" + uram.toString() + "G -jar server.jar nogui", "pause");
+					System.out.println("An unexpected Error occured! Please try redownloading it! If the Problem still occurs, contact the Developer over GitHub!");
+					System.out.println("Error Code: 32");
 					
-				}
-				Path filelinux = Paths.get("start.sh");
-				
-				try {
-					Files.write(filelinux, lineslinux, StandardCharsets.UTF_8);
-					System.out.println("Successfully created start.sh!");
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.out.println("start.sh could not be created! Redownload Program, check GitHub or contact the Developer, if the Programs still occures!");
+					properties(os, sfile, screen);
+					
 				}
 			
 			} else {
 				
-				System.out.println("An unexpected Error occured! Please try redownloading it! If the Problem still occurs, contact the Developer over GitHub!");
-				System.out.println("Error Code: 32");
-				
+			setupram ramwin = new setupram(os, sfile, screen);
+			
 			}
+			
+			
+		} else {
+			
+			properties(os, sfile, screen);
 			
 		}
 		
 		System.out.println("Necessary Files created!");
 		
-		properties();
-		
 	}
 	
-	public static void properties() {
+	public static void properties(String os, boolean sfile, boolean screen) {
+		
+		if(main.console == true) {
 		
 		main.clear(5);
 		
@@ -252,79 +272,85 @@ public class setup {
 												} else {
 													
 													System.out.println("Invalid Input! Restarting Process!");
-													properties();
+													properties(os, sfile, screen);
 													
 												}
 												
 											} else {
 												
 												System.out.println("Invalid Input! Restarting Process!");
-												properties();
+												properties(os, sfile, screen);
 												
 											}
 											
 										} else {
 											
 											System.out.println("Invalid Input! Restarting Process!");
-											properties();
+											properties(os, sfile, screen);
 											
 										}
 										
 									} else {
 										
 										System.out.println("Invalid Input! Restarting Process!");
-										properties();
+										properties(os, sfile, screen);
 										
 									}
 									
 								} else {
 									
 									System.out.println("Invalid Input! Restarting Process!");
-									properties();
+									properties(os, sfile, screen);
 									
 								}
 								
 							} else {
 								
 								System.out.println("Invalid Input! Restarting Process!");
-								properties();
+								properties(os, sfile, screen);
 								
 							}
 							
 						} else {
 							
 							System.out.println("Invalid Input! Restarting Process!");
-							properties();
+							properties(os, sfile, screen);
 							
 						}
 						
 					} else {
 						
 						System.out.println("Invalid Input! Restarting Process!");
-						properties();
+						properties(os, sfile, screen);
 						
 					}
 					
 				} else {
 					
 					System.out.println("Invalid Input! Restarting Process!");
-					properties();
+					properties(os, sfile, screen);
 					
 				}
 				
 			} else {
 				
 				System.out.println("Invalid Input! Restarting Process!");
-				properties();
+				properties(os, sfile, screen);
 				
 			}
 			
 		} else {
 			
 			System.out.println("Invalid Input! Restarting Process!");
-			properties();
+			properties(os, sfile, screen);
 			
 		}
+		
+	} else {
+		
+		propertieswindow propwin = new propertieswindow();
+		
+	}
 		
 	}
 	
